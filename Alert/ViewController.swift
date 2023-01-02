@@ -49,6 +49,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnLompRemove(_ sender: UIButton) {
+        let lampRemoveAction = UIAlertController(title: "램프제거", message: "램프를 제거하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
+        let offAction = UIAlertAction(title: "아니오, 끕니다", style: UIAlertAction.Style.default, handler: {
+            ACTION in self.lampImg.image = self.imgOff
+            self.isLampOn = false
+        })
+        let onAction = UIAlertAction(title: "아니오, 켭니다", style: UIAlertAction.Style.default, handler: {
+            ACTION in self.lampImg.image = self.imgOn
+            self.isLampOn = true
+        })
+        let removeAction = UIAlertAction(title: "네, 제거합니다", style: UIAlertAction.Style.destructive, handler: {
+            ACTION in self.lampImg.image = self.imgRemove
+            self.isLampOn = false
+        })
+        lampRemoveAction.addAction(offAction)
+        lampRemoveAction.addAction(onAction)
+        lampRemoveAction.addAction(removeAction)
+        present(lampRemoveAction, animated: true, completion: nil)
     }
 }
 
